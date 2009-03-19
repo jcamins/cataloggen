@@ -1,6 +1,7 @@
 #!/bin/bash
-cat full.xml | perl sanitize.pl > temp.xml
-#saxonb-xslt -s:test.xml -xsl:catalog.xsl -o:test.tex
+saxonb-xslt -s:test.xml -xsl:preprocess.xsl -o:processed.xml
+cat processed.xml | perl sanitize.pl > temp.xml
+#cat full.xml | perl sanitize.pl > temp.xml
 saxonb-xslt -s:temp.xml -xsl:catalog.xsl -o:test.tex
 latex test.tex
 grep "^%NAMES:" test.tex | sed -e "s/%NAMES://" > names.idx

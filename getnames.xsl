@@ -3,9 +3,13 @@
 <xsl:strip-space elements="*"/>
 
 <xsl:template match="/">
-	<xsl:for-each select="//datafield[@tag=100 or @tag=600 or @tag=700]">
-		<xsl:apply-templates/>
-		<xsl:text>%%</xsl:text>
+	<xsl:for-each select="//marc:datafield[@tag=100 or @tag=600 or @tag=700]">
+<!--		<xsl:apply-templates/>
+		<xsl:text>%%</xsl:text>-->
+		<xsl:value-of select="marc:subfield[@code='a']"/><xsl:text> </xsl:text>
+		<xsl:value-of select="marc:subfield[@code='b']"/><xsl:text> </xsl:text>
+		<xsl:value-of select="marc:subfield[@code='q']"/><xsl:text>
+</xsl:text>
 	</xsl:for-each>
 </xsl:template>
 
