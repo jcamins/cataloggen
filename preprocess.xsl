@@ -13,7 +13,7 @@
 			<xsl:attribute namespace="xsi" name="schemaLocation">http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd</xsl:attribute>
 			<xsl:attribute name="xmlns">http://www.loc.gov/MARC21/slim</xsl:attribute>-->
 		<xsl:for-each select="marc:record">
-			<xsl:sort select="substring(marc:datafield[@tag='245']/marc:subfield[@code='a'],marc:datafield[@tag='245']/@ind2 + 1)" order="ascending"/>
+			<xsl:sort select="lower-case(substring(marc:datafield[@tag='245']/marc:subfield[@code='a'],marc:datafield[@tag='245']/@ind2 + 1))" order="ascending"/>
 			<xsl:variable name="pos" select="position()"/>
 			<record>
 				<ref><xsl:value-of select="$pos"/></ref>
