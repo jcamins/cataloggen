@@ -24,7 +24,16 @@
 				<xsl:variable name="subfield246a" select="marc:subfield[@code='a']/text()"/>
 				<xsl:if test="count(preceding-sibling::marc:datafield[@tag='246']/marc:subfield[@code='a' and text()=$subfield246a])=0 and not(contains($subfield246a,'&amp;')) and not(contains($subfield246a,'%26'))">
 					<see>
-					<datafield tag="245" ind1="0" ind2="0">
+					<datafield tag="245" ind1="0">
+					<xsl:choose>
+					<xsl:when test="matches(marc:subfield[@code='a'],'^A ')">
+						<xsl:attribute name="ind2">2</xsl:attribute>
+					</xsl:when>
+					<xsl:when test="matches(marc:subfield[@code='a'],'^The ')">
+						<xsl:attribute name="ind2">4</xsl:attribute>
+					</xsl:when>
+					<xsl:otherwise><xsl:attribute name="ind2">0</xsl:attribute></xsl:otherwise>
+					</xsl:choose>
 					<xsl:for-each select="marc:subfield">
 						<xsl:copy-of select="."/>
 					</xsl:for-each>
