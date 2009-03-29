@@ -21,14 +21,17 @@
 			</record>
 
 			<xsl:for-each select="marc:datafield[@tag='246']">
-				<see>
-				<datafield tag="245" ind1="0" ind2="0">
-				<xsl:for-each select="marc:subfield">
-					<xsl:copy-of select="."/>
-				</xsl:for-each>
-				</datafield>
-				<ref><xsl:value-of select="$pos"/></ref>
-				</see>
+				<xsl:variable name="subfield246a" select="marc:subfield[@code='a']/text()"/>
+				<xsl:if test="count(preceding-sibling::marc:datafield[@tag='246']/marc:subfield[@code='a' and text()=$subfield246a])=0 and not(contains($subfield246a,'&amp;')) and not(contains($subfield246a,'%26'))">
+					<see>
+					<datafield tag="245" ind1="0" ind2="0">
+					<xsl:for-each select="marc:subfield">
+						<xsl:copy-of select="."/>
+					</xsl:for-each>
+					</datafield>
+					<ref><xsl:value-of select="$pos"/></ref>
+					</see>
+				</xsl:if>
 			</xsl:for-each>
 		</xsl:for-each>
 
