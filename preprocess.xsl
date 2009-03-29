@@ -14,17 +14,25 @@
 			<xsl:attribute name="xmlns">http://www.loc.gov/MARC21/slim</xsl:attribute>-->
 		<xsl:for-each select="marc:record">
 			<xsl:sort select="substring(marc:datafield[@tag='245']/marc:subfield[@code='a'],marc:datafield[@tag='245']/@ind2 + 1)" order="ascending"/>
-			<xsl:copy-of select="."/>
+			<xsl:variable name="pos" select="position()"/>
+			<record>
+				<ref><xsl:value-of select="$pos"/></ref>
+				<xsl:copy-of select="./*"/>
+			</record>
+
+			<xsl:for-each select="marc:datafield[@tag='246']">
+				<see>
+				<datafield tag="245" ind1="0" ind2="0">
+				<xsl:for-each select="marc:subfield">
+					<xsl:copy-of select="."/>
+				</xsl:for-each>
+				</datafield>
+				<ref><xsl:value-of select="$pos"/></ref>
+				</see>
+			</xsl:for-each>
 		</xsl:for-each>
 
 		<xsl:for-each select="//marc:datafield[@tag='246']">
-			<see>
-			<datafield tag="245" ind1="0" ind2="0">
-			<xsl:for-each select="marc:subfield">
-				<xsl:copy-of select="."/>
-			</xsl:for-each>
-			</datafield>
-			</see>
 		</xsl:for-each>
 		</collection>
 	</xsl:template>
