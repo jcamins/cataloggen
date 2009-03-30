@@ -19,7 +19,7 @@ while (<>) {
 	$_ =~ s/a\xCC\x86/{\\ae}a/g;
 	$_ =~ s/o\xCC\x88/\\"{o}/g;
 	$_ =~ s/u\xCC\x88/\\"{u}/g;
-	$_ =~ s/ag\xCC\x89/\\h{a}g/g;
+	$_ =~ s/ag\xCC\x89/aag/g;
 	$_ =~ s/a\xCC\x8A/{\\aa}/g;
 	$_ =~ s/n\xCC\x8C/\\'{e}n/g;
 	$_ =~ s/g\xCC\x93/\\c{g}/g;

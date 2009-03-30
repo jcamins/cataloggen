@@ -38,6 +38,7 @@
 						<xsl:copy-of select="."/>
 					</xsl:for-each>
 					</datafield>
+					<title><xsl:copy-of select="preceding-sibling::marc:datafield[@tag='245']/*"/></title>
 					<ref><xsl:value-of select="$pos"/></ref>
 					</see>
 				</xsl:if>
