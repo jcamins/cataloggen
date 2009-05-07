@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 saxonb-xslt -s:full_fin.xml -xsl:preprocess.xsl -o:processed.xml
 #saxonb-xslt -s:full.xml -xsl:preprocess.xsl -o:processed.xml
 cat processed.xml | perl sanitize.pl > temp.xml
