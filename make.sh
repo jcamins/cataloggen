@@ -18,6 +18,7 @@ saxonb-xslt -s:full_fin.xml -xsl:preprocess.xsl -o:processed.xml
 #saxonb-xslt -s:full.xml -xsl:preprocess.xsl -o:processed.xml
 cat processed.xml | perl sanitize.pl > temp.xml
 saxonb-xslt -s:temp.xml -xsl:catalog.xsl -o:catalog.tex
+touch names.idx subject.idx geo.idx series.idx names.ind subject.ind geo.ind series.ind
 xelatex catalog.tex
 grep "^%NAMES:" catalog.tex | sed -e "s/%NAMES://" | sed -e "s/|/ /g" > names.idx
 grep "^%SUBJECT:" catalog.tex | sed -e "s/%SUBJECT://" | sed -e "s/|/ /g" > subject.idx
