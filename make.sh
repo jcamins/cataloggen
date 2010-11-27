@@ -14,8 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Cataloggen.  If not, see <http://www.gnu.org/licenses/>.
 
-saxonb-xslt -s:full_fin.xml -xsl:preprocess.xsl -o:processed.xml
-#saxonb-xslt -s:full.xml -xsl:preprocess.xsl -o:processed.xml
+saxonb-xslt -s:$1 -xsl:preprocess.xsl -o:processed.xml
 cat processed.xml | perl sanitize.pl > temp.xml
 saxonb-xslt -s:temp.xml -xsl:catalog.xsl -o:catalog.tex
 touch names.idx subject.idx geo.idx series.idx names.ind subject.ind geo.ind series.ind
