@@ -1,5 +1,5 @@
 <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!-- Copyright (c) 2010 Jared Camins-Esakov
+<!-- Copyright (c) 2010 C & P Bibliography Services, Jared Camins-Esakov
      Cataloggen is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
      the Free Software Foundation, either version 3 of the License, or

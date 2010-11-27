@@ -1,5 +1,5 @@
 <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!-- Copyright (c) 2010 Jared Camins-Esakov
+<!-- Copyright (c) 2010 C & P Bibliography Services, Jared Camins-Esakov
      Cataloggen is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
      the Free Software Foundation, either version 3 of the License, or
@@ -17,62 +17,7 @@
 <xsl:strip-space elements="*"/>
 
 	<xsl:template match="/">
-		<xsl:text>\documentclass[12pt]{book}
-\usepackage{geometry}
-\geometry{paperwidth=6in,paperheight=9in,textwidth=3.75in,textheight=7.3in,
-   twoside,bottom=0.8in,left=1.25in}
-\geometry{pdftex}
-\usepackage[T5]{fontenc}
-\usepackage{pslatex}
-\usepackage{multind}
-\usepackage{tipa}
-\usepackage{sectsty}
-\usepackage{graphicx}
-\usepackage{tocvsec2}
-\usepackage{shapepar}
-\usepackage[compact]{titlesec}
-\usepackage[pdftex]{hyperref}
-\hypersetup{
-    bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-    pdftitle={Catalog},    % title
-    pdfauthor={},     % author
-    pdfnewwindow=true,      % links in new window
-    colorlinks,%
-    citecolor=black,%
-    filecolor=black,%
-    linkcolor=black,%
-    urlcolor=black
-}
-
-\def\triangledownshape{%
-{0}%
-{0}b{0}\\%
-{0}t{-10}{20}\\%
-{8.66}t{-5}{10}\\%
-{17.32}e{0}%
-}
-\def\triangledownpar#1{\shapepar\triangledownshape #1\unskip\ $\bigtriangledown$\par}
-
-
-\newcommand{\ed}[1]{{\textit{#1}}\par}
-\newcommand{\physdesc}[1]{#1\par}
-\newcommand{\isbn}[1]{\footnotesize#1 }
-\newcommand{\imprint}[1]{#1\par}
-\newcommand{\seeentry}[3]{\vspace{2ex}\textbf{\large #1,}~\textit{see}~\ref{#2}.\nopagebreak\par{\hspace{2em}\sc\small#3}\par}
-\renewcommand*\thesection{\arabic{section}}
-\makeindex{names}
-\makeindex{subject}
-\makeindex{geo}
-\makeindex{series}
-
-\makeatletter
-\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname.\quad}}
-\makeatother
-
-\titlespacing{\section}{0pt}{+2ex}{*0}
-
-\sectionfont{\large}
+		<xsl:text>\input{./preamble.tex}
 \begin{document}
 \maxtocdepth{section}
 \pagestyle{empty}
